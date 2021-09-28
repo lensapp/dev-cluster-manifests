@@ -300,7 +300,7 @@ metadata:
   name: prometheus
   namespace: lens-metrics
 spec:
-  replicas: {{replicas}}
+  replicas: 1
   serviceName: prometheus
   selector:
     matchLabels:
@@ -339,8 +339,8 @@ spec:
             - --web.listen-address=0.0.0.0:9090
             - --config.file=/etc/prometheus/prometheus.yaml
             - --storage.tsdb.path=/var/lib/prometheus
-            - --storage.tsdb.retention.time={{retention.time}}
-            - --storage.tsdb.retention.size={{retention.size}}
+            - --storage.tsdb.retention.time=2d
+            - --storage.tsdb.retention.size=5GB
             - --storage.tsdb.min-block-duration=2h
             - --storage.tsdb.max-block-duration=2h
           ports:
